@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_hackathon/widgets/experience_list_widget.dart';
 import 'package:flutter_hackathon/widgets/experience_map_widget.dart';
 
 class MainScreen extends StatelessWidget {
@@ -23,9 +24,10 @@ class MainScreen extends StatelessWidget {
             ),
           ),
           body: TabBarView(
+            physics: NeverScrollableScrollPhysics(),
             children: tabs.map((ViewTab tab) {
               return Padding(
-                padding: const EdgeInsets.all(16.0),
+                padding: const EdgeInsets.all(0.0),
                 child: tab.view,
               );
             }).toList(),
@@ -47,6 +49,6 @@ class ViewTab {
 }
 
 const List<ViewTab> tabs = const <ViewTab>[
-  const ViewTab(icon: Icons.list, view: const ExperienceMapView()),
+  const ViewTab(icon: Icons.list, view: const ExperienceListView()),
   const ViewTab(icon: Icons.map, view: const ExperienceMapView()),
 ];

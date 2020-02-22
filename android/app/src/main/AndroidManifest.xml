@@ -9,6 +9,8 @@
         android:name="io.flutter.app.FlutterApplication"
         android:label="flutter_hackathon"
         android:icon="@mipmap/ic_launcher">
+        <meta-data android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyBLI83LV-n93GM7r9bZAZ68_cfZ5-NcW3k"/>
         <activity
             android:name=".MainActivity"
             android:launchMode="singleTop"
