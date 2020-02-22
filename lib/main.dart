@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_hackathon/screens/main_screen.dart';
 
-void main() => runApp(MyApp());
+void main() => runApp(ExperienceApp());
 
-class MyApp extends StatelessWidget {
+class ExperienceApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -10,7 +11,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: MyHomePage(title: 'Flutter Demo Home Page'),
+      home: MainScreen(),
     );
   }
 }
