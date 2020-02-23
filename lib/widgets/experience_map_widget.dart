@@ -45,13 +45,13 @@ class ExperienceMapState extends State<ExperienceMapView> {
         ),
         markers: _markers.values.toSet(),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _getLocation,
-        tooltip: 'Get Location',
-        child: Icon(
-          Icons.flag,
-        ),
-      ),
+//      floatingActionButton: FloatingActionButton(
+//        onPressed: _getLocation,
+//        tooltip: 'Get Location',
+//        child: Icon(
+//          Icons.flag,
+//        ),
+//      ),
     );
   }
 }

@@ -92,17 +92,51 @@ final List<Experience> mockExperiences = [
           rating: 4,
         ),
         Review(
+          title: 'Not cool',
+          content: 'Encaged animals? Uncool.',
+          rating: 1,
+        ),
+        Review(
           title: 'Pretty good',
           content: 'Fun afternoon',
           rating: 4,
+        ),
+        Review(
+          title: 'Best zoo',
+          content: 'Very cool zoo.',
+          rating: 4,
+        ),
+        Review(
+          title: 'I love all animals',
+          content: 'I want to feed the penguins.',
+          rating: 5,
+        ),
+        Review(
+          title: 'Nice bears',
+          content: 'Very big.',
+          rating: 3,
+        ),
+        Review(
+          title: 'Ok place',
+          content: 'Very big.',
+          rating: 2,
+        ),
+        Review(
+          title: 'Bad place',
+          content: 'Not small enough.',
+          rating: 1,
+        ),
+        Review(
+          title: 'Where are the lions?',
+          content: 'There were no lions.',
+          rating: 1,
         ),
       ]),
   Experience(
       name: 'Aalborgtårnet',
       description: 'A watertower',
       location: Coordinate(latitude: 57.0423943, longitude: 9.9020762),
-      imageUrl:
-      'https://f.nordiskemedier.dk/2h2u0w4sxzuckeeb_580_387.jpg',
+      imageUrl: 'https://f.nordiskemedier.dk/2h2u0w4sxzuckeeb_580_387.jpg',
       rating: 2,
       reviews: <Review>[
         Review(
@@ -121,7 +155,7 @@ final List<Experience> mockExperiences = [
       description: 'A watertower',
       location: Coordinate(latitude: 57.043527, longitude: 9.9167723),
       imageUrl:
-      'https://kunsten.dk/sites/default/files/public/styles/large_square/public/billeder/kunsten.jpg?itok=wEfOGWOG',
+          'https://kunsten.dk/sites/default/files/public/styles/large_square/public/billeder/kunsten.jpg?itok=wEfOGWOG',
       rating: 2.5,
       reviews: <Review>[
         Review(
