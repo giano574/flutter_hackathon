@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hackathon/models/experience.dart';
+import 'package:flutter_hackathon/screens/review_page.dart';
+import 'package:flutter_hackathon/widgets/review_item.dart';
 import 'package:flutter_hackathon/widgets/review_list.dart';
 
 class DescriptionScreen extends StatelessWidget {
@@ -7,7 +9,48 @@ class DescriptionScreen extends StatelessWidget {
 
   const DescriptionScreen({Key key, this.experience}) : super(key: key);
 
-  @override
+  Widget build(BuildContext context) {
+    return new Scaffold(
+      body: CustomScrollView(
+        slivers: <Widget>[
+          SliverAppBar(
+            expandedHeight: 200,
+            floating: false,
+            pinned: true,
+            flexibleSpace: FlexibleSpaceBar(
+              centerTitle: true,
+              background: Hero(
+                tag: experience.name,
+                child: Image.network(experience.imageUrl, fit: BoxFit.cover),
+              ),
+              title: Text(experience.name),
+            ),
+          ),
+          SliverList(
+            delegate: SliverChildListDelegate(
+              <Widget>[
+                ...experience.reviews
+                    .map((review) => ReviewListItem(review: review)),
+              ],
+            ),
+          )
+        ],
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () => Navigator.of(context).push(
+          MaterialPageRoute<void>(
+            builder: (BuildContext context) {
+              return ReviewPage(experience: experience);
+            },
+          ),
+        ),
+        tooltip: 'Comment',
+        child: Icon(Icons.add),
+      ),
+    );
+  }
+
+/*  @override
   Widget build(BuildContext context) {
     return DefaultTabController(
       length: tabs.length,
@@ -29,13 +72,16 @@ class DescriptionScreen extends StatelessWidget {
           }).toList(),
         ),
         floatingActionButton: FloatingActionButton(
-          onPressed:() => true,
+          onPressed:() =>  Navigator.of(context).push(
+            MaterialPageRoute<void>(
+              builder: (BuildContext context) {
+                return ReviewPage();,
           tooltip: 'Comment',
           child: Icon(Icons.add),
         ),
       ),
     );
-  }
+  }*/
 }
 
 class ViewTab {

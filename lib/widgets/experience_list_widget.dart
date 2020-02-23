@@ -13,7 +13,7 @@ class ExperienceListView extends StatelessWidget {
     return ListView(
       children: <Widget>[
         for (final Experience experience in experiences)
-          ExperienceItem(experience: experience),
+          ExperienceListItem(experience: experience),
       ],
     );
   }
