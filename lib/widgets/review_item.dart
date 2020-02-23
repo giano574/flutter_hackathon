@@ -14,20 +14,18 @@ class ReviewListItem extends StatelessWidget {
       subtitle: Text(review.content),
       trailing: Column(
         children: <Widget>[
-          Flexible(
-            child: RatingBar(
-              onRatingUpdate: (rating) => null,
-              ignoreGestures: true,
-              itemSize: 20,
-              glow: false,
-              initialRating: review.rating.toDouble(),
-              minRating: 1,
-              direction: Axis.horizontal,
-              itemCount: 5,
-              itemBuilder: (context, _) => Icon(
-                Icons.star,
-                color: Colors.amber,
-              ),
+          RatingBar(
+            onRatingUpdate: (rating) => null,
+            ignoreGestures: true,
+            itemSize: 20,
+            glow: false,
+            initialRating: review.rating.toDouble(),
+            minRating: 1,
+            direction: Axis.horizontal,
+            itemCount: 5,
+            itemBuilder: (context, _) => Icon(
+              Icons.star,
+              color: Colors.amber,
             ),
           ),
           Text(
