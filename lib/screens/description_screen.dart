@@ -27,6 +27,11 @@ class DescriptionScreen extends StatelessWidget {
             return tab.view;
           }).toList(),
         ),
+        floatingActionButton: FloatingActionButton(
+          onPressed:() => true,
+          tooltip: 'Comment',
+          child: Icon(Icons.add),
+        ),
       ),
     );
   }

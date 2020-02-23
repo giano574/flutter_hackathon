@@ -16,11 +16,6 @@ class _ReviewListState extends State<ReviewList>{
 
     return Scaffold(
       body: Icon(Icons.fastfood),
-      floatingActionButton: FloatingActionButton(
-        onPressed:() => true,
-        tooltip: 'Increment',
-        child: Icon(Icons.add),
-      ),
     );
   }
 
