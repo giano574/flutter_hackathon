@@ -17,7 +17,9 @@ class ReviewForm extends StatefulWidget {
 class _ReviewFormState extends State<ReviewForm> {
   final _titleTextController = TextEditingController();
   final _descriptionTextController = TextEditingController();
-  int _rating;
+  int _rating = 1;
+  bool _validateTitle = false;
+  bool _validateDescription = false;
   Review _review;
 
   @override
@@ -26,21 +28,22 @@ class _ReviewFormState extends State<ReviewForm> {
       padding: EdgeInsets.all(8),
       children: <Widget>[
         TextFormField(
-            controller: _titleTextController,
-            decoration: InputDecoration(
-              hintText: 'Title',
-              border: OutlineInputBorder(),
-            ),
-            ),
+          controller: _titleTextController,
+          decoration: InputDecoration(
+            hintText: 'Title',
+            border: OutlineInputBorder(),
+            errorText: _validateTitle ? '*required' : null,
+          ),
+        ),
         SizedBox(
           height: 12,
         ),
         RatingBar(
-          onRatingUpdate: (rating) => _rating=rating.toInt(),
+          onRatingUpdate: (rating) => _rating = rating.toInt(),
           ignoreGestures: false,
-          itemSize: 20,
+          itemSize: 40,
           glow: false,
-          initialRating: 0,
+          initialRating: 1,
           minRating: 1,
           direction: Axis.horizontal,
           itemCount: 5,
@@ -55,9 +58,11 @@ class _ReviewFormState extends State<ReviewForm> {
         TextField(
           controller: _descriptionTextController,
           decoration: InputDecoration(
-              hintText: 'Write a comment', border: OutlineInputBorder()),
+              hintText: 'Write a comment', border: OutlineInputBorder(),
+            errorText: _validateTitle ? '*required' : null,
+          ),
           keyboardType: TextInputType.multiline,
-          maxLines: 20,
+          maxLines: 18,
         ),
         SizedBox(
           height: 12,
@@ -65,15 +70,22 @@ class _ReviewFormState extends State<ReviewForm> {
         RaisedButton(
           onPressed: () async {
             setState(() {
-              _review.rating = _rating;
-              _review.title = _titleTextController.text;
-              _review.content = _descriptionTextController.text;
+              _titleTextController.text.isEmpty ? _validateTitle = true : _validateTitle = false;
+              _descriptionTextController.text.isEmpty ? _validateDescription= true : _validateDescription = false;
             });
-            final _reviewService = ReviewService();
-            if (widget.review == null) {
-              await _reviewService.add(widget.experience, _review);
-            } else {
-              await _reviewService.update(widget.experience, _review);
+            if (!_validateTitle || !_validateDescription) {
+              setState(() {
+                _review.rating = _rating;
+                _review.title = _titleTextController.text;
+                _review.content = _descriptionTextController.text;
+              });
+              final _reviewService = ReviewService();
+              if (widget.review == null) {
+                await _reviewService.add(widget.experience, _review);
+              } else {
+                await _reviewService.update(widget.experience, _review);
+              }
+              Navigator.pop(context);
             }
           },
           child: Text('Comment'),
