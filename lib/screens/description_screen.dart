@@ -29,8 +29,12 @@ class DescriptionScreen extends StatelessWidget {
           SliverList(
             delegate: SliverChildListDelegate(
               <Widget>[
-                ...experience.reviews
-                    .map((review) => ReviewListItem(review: review)),
+                ...ListTile.divideTiles(
+                  context: context,
+                  tiles: experience.reviews.map(
+                    (review) => ReviewListItem(review: review),
+                  ),
+                ).toList()
               ],
             ),
           )

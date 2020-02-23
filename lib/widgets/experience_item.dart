@@ -15,7 +15,6 @@ class ExperienceListItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListTile(
-      dense: false,
       contentPadding: EdgeInsets.only(right: 3.0, left: 8.0),
       leading: Container(
         height: 100,
