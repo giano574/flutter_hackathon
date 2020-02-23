@@ -102,7 +102,7 @@ final List<Experience> mockExperiences = [
       description: 'A watertower',
       location: Coordinate(latitude: 57.0423943, longitude: 9.9020762),
       imageUrl:
-      'https://migogaalborg.dk/wp-content/uploads/2017/07/Aalborg-Tårnet-billede-800x480.jpg',
+      'https://f.nordiskemedier.dk/2h2u0w4sxzuckeeb_580_387.jpg',
       rating: 2,
       reviews: <Review>[
         Review(

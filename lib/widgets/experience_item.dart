@@ -6,10 +6,10 @@ import 'package:flutter_hackathon/screens/description_screen.dart';
 import 'package:flutter_hackathon/screens/main_screen.dart';
 import 'package:flutter_hackathon/widgets/experience_map_widget.dart';
 
-class ExperienceItem extends StatelessWidget {
+class ExperienceListItem extends StatelessWidget {
   final Experience experience;
 
-  const ExperienceItem({Key key, this.experience}) : super(key: key);
+  const ExperienceListItem({Key key, this.experience}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
