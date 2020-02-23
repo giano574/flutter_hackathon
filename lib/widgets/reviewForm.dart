@@ -62,7 +62,7 @@ class _ReviewFormState extends State<ReviewForm> {
             errorText: _validateTitle ? '*required' : null,
           ),
           keyboardType: TextInputType.multiline,
-          maxLines: 18,
+          maxLines: null,
         ),
         SizedBox(
           height: 12,
@@ -73,7 +73,7 @@ class _ReviewFormState extends State<ReviewForm> {
               _titleTextController.text.isEmpty ? _validateTitle = true : _validateTitle = false;
               _descriptionTextController.text.isEmpty ? _validateDescription= true : _validateDescription = false;
             });
-            if (!_validateTitle || !_validateDescription) {
+            if (!_validateTitle && !_validateDescription) {
               setState(() {
                 _review.rating = _rating;
                 _review.title = _titleTextController.text;
