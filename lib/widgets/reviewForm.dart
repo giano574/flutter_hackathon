@@ -1,12 +1,14 @@
 
 import 'package:flutter/material.dart';
+import 'package:flutter_hackathon/models/experience.dart';
 import 'package:flutter_hackathon/models/review.dart';
 import 'package:flutter_hackathon/services/review_service.dart';
 
 class ReviewForm extends StatefulWidget {
   final Review review;
+  final Experience experience;
 
-  const ReviewForm({Key key, this.review}) : super(key: key);
+  const ReviewForm({Key key, this.review, this.experience}) : super(key: key);
 
   @override
   _ReviewFormState createState() => _ReviewFormState();
@@ -38,9 +40,9 @@ class _ReviewFormState extends State<ReviewForm> {
             });
             final _reviewService = ReviewService();
             if (widget.review == null) {
-              await _reviewService.add(_review);
+              await _reviewService.add(widget.experience,_review);
             } else {
-              await _reviewService.update(_review);
+              await _reviewService.update(widget.experience,_review);
             }
           },
           child: Text('Comment'),

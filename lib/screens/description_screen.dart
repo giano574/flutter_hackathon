@@ -40,7 +40,7 @@ class DescriptionScreen extends StatelessWidget {
         onPressed: () => Navigator.of(context).push(
           MaterialPageRoute<void>(
             builder: (BuildContext context) {
-              return ReviewPage();
+              return ReviewPage(experience: experience);
             },
           ),
         ),
