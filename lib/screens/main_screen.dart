@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hackathon/models/experience.dart';
+import 'package:flutter_hackathon/screens/add_screen.dart';
 import 'package:flutter_hackathon/services/experience_service.dart';
 import 'package:flutter_hackathon/widgets/experience_list_widget.dart';
 import 'package:flutter_hackathon/widgets/experience_map_widget.dart';
-
 
 class MainScreen extends StatelessWidget {
   final ExperienceService experienceService = ExperienceService();
@@ -45,14 +45,25 @@ class MainScreen extends StatelessWidget {
               ),
               Padding(
                 padding: const EdgeInsets.all(0.0),
-                child: ExperienceMapView(experiences: experienceService.all(),),
+                child: ExperienceMapView(
+                  experiences: experienceService.all(),
+                ),
               ),
             ],
           ),
-          floatingActionButton: FloatingActionButton(child: Icon(Icons.add)),
+          floatingActionButton: FloatingActionButton(
+            child: Icon(Icons.add),
+            onPressed: () => Navigator.of(context).push(
+              MaterialPageRoute<void>(
+                builder: (BuildContext context) {
+                  return AddScreen();
+                },
+              ),
+            ),
+            tooltip: 'Comment',
+          ),
         ),
       ),
     );
   }
-
 }
