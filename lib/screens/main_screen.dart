@@ -4,6 +4,7 @@ import 'package:flutter_hackathon/services/experience_service.dart';
 import 'package:flutter_hackathon/widgets/experience_list_widget.dart';
 import 'package:flutter_hackathon/widgets/experience_map_widget.dart';
 
+
 class MainScreen extends StatelessWidget {
   final ExperienceService experienceService = ExperienceService();
 
@@ -52,4 +53,5 @@ class MainScreen extends StatelessWidget {
       ),
     );
   }
+
 }
