@@ -1,54 +1,55 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_hackathon/models/experience.dart';
+import 'package:flutter_hackathon/services/experience_service.dart';
 import 'package:flutter_hackathon/widgets/experience_list_widget.dart';
 import 'package:flutter_hackathon/widgets/experience_map_widget.dart';
 
 class MainScreen extends StatelessWidget {
+  final ExperienceService experienceService = ExperienceService();
+
   @override
   Widget build(BuildContext context) {
+    final List<Experience> experiences = experienceService.all();
+
     return MaterialApp(
       home: DefaultTabController(
-        length: tabs.length,
+        length: 2,
         child: Scaffold(
           appBar: AppBar(
             title: Center(child: const Text('Experiences')),
             bottom: TabBar(
               isScrollable: false,
-              tabs: tabs.map((ViewTab choice) {
-                return Tab(
+              tabs: [
+                Tab(
                   icon: Icon(
-                    choice.icon,
+                    Icons.list,
                     size: 35,
                   ),
-                );
-              }).toList(),
+                ),
+                Tab(
+                  icon: Icon(
+                    Icons.map,
+                    size: 35,
+                  ),
+                ),
+              ],
             ),
           ),
           body: TabBarView(
             physics: NeverScrollableScrollPhysics(),
-            children: tabs.map((ViewTab tab) {
-              return Padding(
+            children: [
+              Padding(
                 padding: const EdgeInsets.all(0.0),
-                child: tab.view,
-              );
-            }).toList(),
+                child: ExperienceListView(experiences: experienceService.all()),
+              ),
+              Padding(
+                padding: const EdgeInsets.all(0.0),
+                child: ExperienceMapView(experiences: experienceService.all(),),
+              ),
+            ],
           ),
         ),
       ),
     );
   }
 }
-
-class ViewTab {
-  const ViewTab({
-    @required this.icon,
-    @required this.view,
-  });
-
-  final Widget view;
-  final IconData icon;
-}
-
-const List<ViewTab> tabs = const <ViewTab>[
-  const ViewTab(icon: Icons.list, view: const ExperienceListView()),
-  const ViewTab(icon: Icons.map, view: const ExperienceMapView()),
-];

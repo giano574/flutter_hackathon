@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_hackathon/models/experience.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 class ExperienceMapView extends StatefulWidget {
-  const ExperienceMapView();
+  final List<Experience> experiences;
 
+  const ExperienceMapView({Key key, this.experiences}) : super(key: key);
   @override
   State<ExperienceMapView> createState() => ExperienceMapState();
 }
