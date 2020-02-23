@@ -116,4 +116,28 @@ final List<Experience> mockExperiences = [
           rating: 1,
         ),
       ]),
+  Experience(
+      name: 'Kunsten Museum',
+      description: 'A watertower',
+      location: Coordinate(latitude: 57.043527, longitude: 9.9167723),
+      imageUrl:
+      'https://kunsten.dk/sites/default/files/public/styles/large_square/public/billeder/kunsten.jpg?itok=wEfOGWOG',
+      rating: 2.5,
+      reviews: <Review>[
+        Review(
+          title: 'Interestin',
+          content: 'If you are into art, this is the place',
+          rating: 3,
+        ),
+        Review(
+          title: 'Weird',
+          content: 'Modern art is weird. I saw a penis in there',
+          rating: 2,
+        ),
+        Review(
+          title: 'Nice place',
+          content: 'Very nice setup',
+          rating: 4,
+        ),
+      ]),
 ];
