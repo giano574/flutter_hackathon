@@ -6,10 +6,10 @@ import 'package:flutter_hackathon/screens/description_screen.dart';
 import 'package:flutter_hackathon/screens/main_screen.dart';
 import 'package:flutter_hackathon/widgets/experience_map_widget.dart';
 
-class ExperienceItem extends StatelessWidget {
+class ExperienceListItem extends StatelessWidget {
   final Experience experience;
 
-  const ExperienceItem({Key key, this.experience}) : super(key: key);
+  const ExperienceListItem({Key key, this.experience}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -18,18 +18,15 @@ class ExperienceItem extends StatelessWidget {
         child: Row(
           children: <Widget>[
             Hero(
-                tag: 'exp_img',
+                tag: experience.name,
                 child: Image.network(
                   experience.imageUrl,
                   width: 100,
                 )),
             Column(
               children: <Widget>[
-                Hero(
-                  tag: "exp_name",
-                  child: Text(experience.name),
-                ),
-                Text('Rating: ${experience.rating.toStringAsFixed(1)}/5')
+                Text(experience.name),
+                Text('Rating: ${experience.rating.toStringAsFixed(1)}/5'),
               ],
             ),
           ],

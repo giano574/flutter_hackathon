@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hackathon/models/experience.dart';
+import 'package:flutter_hackathon/services/experience_service.dart';
+import 'package:flutter_hackathon/widgets/experience_list_widget.dart';
 import 'package:flutter_hackathon/widgets/review_list.dart';
 
 class DescriptionScreen extends StatelessWidget {
@@ -7,7 +9,50 @@ class DescriptionScreen extends StatelessWidget {
 
   const DescriptionScreen({Key key, this.experience}) : super(key: key);
 
-  @override
+  Widget build(BuildContext context) {
+    return new Scaffold(
+      body: CustomScrollView(
+        slivers: <Widget>[
+          SliverAppBar(
+            expandedHeight: 200,
+            pinned: true,
+            flexibleSpace: FlexibleSpaceBar(
+              background: Hero(
+                tag: experience.name,
+                child: Image.network(experience.imageUrl, fit: BoxFit.cover),
+              ),
+              title: Text(experience.name),
+            ),
+          ),
+          SliverPersistentHeader(
+            pinned: true,
+            floating: false,
+            delegate: _SliverAppBarDelegate(
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child:
+                    ExperienceListView(experiences: ExperienceService().all()),
+//                child: Row(
+//                  mainAxisAlignment: MainAxisAlignment.start,
+//                  children: <Widget>[
+//                    Column(
+//                      mainAxisAlignment: MainAxisAlignment.start,
+//                      children: <Widget>[
+//                        const Text('Reviews'),
+//                        Text(experience.description),
+//                      ],
+//                    ),
+//                  ],
+//                ),
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+/*  @override
   Widget build(BuildContext context) {
     return DefaultTabController(
       length: tabs.length,
@@ -35,6 +80,52 @@ class DescriptionScreen extends StatelessWidget {
         ),
       ),
     );
+  }*/
+}
+
+class Delegate extends SliverPersistentHeaderDelegate {
+  @override
+  Widget build(
+          BuildContext context, double shrinkOffset, bool overlapsContent) =>
+      Padding(
+        padding: EdgeInsets.symmetric(horizontal: 16),
+        child: Container(
+          color: Colors.yellow,
+        ),
+      );
+
+  @override
+  double get maxExtent => 60;
+
+  @override
+  double get minExtent => 30;
+
+  @override
+  bool shouldRebuild(SliverPersistentHeaderDelegate oldDelegate) => true;
+}
+
+class _SliverAppBarDelegate extends SliverPersistentHeaderDelegate {
+  _SliverAppBarDelegate(this._widget);
+
+  final Widget _widget;
+
+  @override
+  double get minExtent => 56;
+
+  @override
+  double get maxExtent => 200;
+
+  @override
+  Widget build(
+      BuildContext context, double shrinkOffset, bool overlapsContent) {
+    return new Container(
+      child: _widget,
+    );
+  }
+
+  @override
+  bool shouldRebuild(_SliverAppBarDelegate oldDelegate) {
+    return false;
   }
 }
 
