@@ -79,6 +79,7 @@ class ViewTab {
   final String string;
   final Widget view;
 
+
   ViewTab({@required this.string, this.view});
 }
 
