@@ -11,10 +11,12 @@ class ExperienceListView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListView(
-      children: <Widget>[
-        for (final Experience experience in experiences)
-          ExperienceListItem(experience: experience),
-      ],
+      children: ListTile.divideTiles(
+        context: context,
+        tiles: experiences.map(
+          (exp) => ExperienceListItem(experience: exp),
+        ),
+      ).toList(),
     );
   }
 }
