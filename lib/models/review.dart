@@ -10,4 +10,5 @@ class Review {
     this.content,
     @required this.rating,
   });
+
 }
