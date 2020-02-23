@@ -57,7 +57,7 @@ class _AddFormState extends State<AddForm> {
 
             child: OutlineButton(
               child: Icon(
-            Icons.camera,
+            Icons.photo_camera,
             semanticLabel: 'Tilføj billede',
           ),
           onPressed: () => true,
