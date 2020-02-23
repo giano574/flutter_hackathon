@@ -48,7 +48,7 @@ class _AddFormState extends State<AddForm> {
           decoration: InputDecoration(
               hintText: 'Write a comment', border: OutlineInputBorder()),
           keyboardType: TextInputType.multiline,
-          maxLines: 10,
+          maxLines: null,
         ),
         SizedBox(
           height: 5,
@@ -57,7 +57,7 @@ class _AddFormState extends State<AddForm> {
 
             child: OutlineButton(
               child: Icon(
-            Icons.image,
+            Icons.camera,
             semanticLabel: 'Tilføj billede',
           ),
           onPressed: () => true,
