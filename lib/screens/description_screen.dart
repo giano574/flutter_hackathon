@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_hackathon/models/experience.dart';
 import 'package:flutter_hackathon/services/experience_service.dart';
 import 'package:flutter_hackathon/widgets/experience_list_widget.dart';
+import 'package:flutter_hackathon/widgets/review_item.dart';
 import 'package:flutter_hackathon/widgets/review_list.dart';
 
 class DescriptionScreen extends StatelessWidget {
@@ -28,13 +29,16 @@ class DescriptionScreen extends StatelessWidget {
           ),
           SliverList(
             delegate: SliverChildListDelegate(
-              <Widget>[],
+              <Widget>[
+                ...experience.reviews
+                    .map((review) => ReviewListItem(review: review)),
+              ],
             ),
           )
         ],
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed:() => true,
+        onPressed: () => true,
         tooltip: 'Comment',
         child: Icon(Icons.add),
       ),
