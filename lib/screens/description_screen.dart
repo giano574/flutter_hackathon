@@ -63,7 +63,10 @@ class DescriptionScreen extends StatelessWidget {
           }).toList(),
         ),
         floatingActionButton: FloatingActionButton(
-          onPressed:() => true,
+          onPressed:() =>  Navigator.of(context).push(
+            MaterialPageRoute<void>(
+              builder: (BuildContext context) {
+                return ReviewPage();,
           tooltip: 'Comment',
           child: Icon(Icons.add),
         ),
