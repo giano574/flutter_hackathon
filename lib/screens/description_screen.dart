@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hackathon/models/experience.dart';
+import 'package:flutter_hackathon/screens/review_page.dart';
 import 'package:flutter_hackathon/services/experience_service.dart';
 import 'package:flutter_hackathon/widgets/experience_list_widget.dart';
 import 'package:flutter_hackathon/widgets/review_item.dart';
@@ -38,7 +39,13 @@ class DescriptionScreen extends StatelessWidget {
         ],
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () => true,
+        onPressed: () => Navigator.of(context).push(
+          MaterialPageRoute<void>(
+            builder: (BuildContext context) {
+              return ReviewPage();
+            },
+          ),
+        ),
         tooltip: 'Comment',
         child: Icon(Icons.add),
       ),
@@ -67,7 +74,10 @@ class DescriptionScreen extends StatelessWidget {
           }).toList(),
         ),
         floatingActionButton: FloatingActionButton(
-          onPressed:() => true,
+          onPressed:() =>  Navigator.of(context).push(
+            MaterialPageRoute<void>(
+              builder: (BuildContext context) {
+                return ReviewPage();,
           tooltip: 'Comment',
           child: Icon(Icons.add),
         ),
